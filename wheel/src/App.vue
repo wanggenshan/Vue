@@ -14,6 +14,7 @@
           </mt-swipe-item>
         </mt-swipe>
       </div>
+
       <div class="upload">
         <div>
           <span>服务类型</span>
@@ -50,7 +51,6 @@
 <script>
 import { Swipe, SwipeItem, Popup } from "mint-ui";
 import Vue from "vue";
-import "mint-ui/lib/style.css";
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Popup.name, Popup);
@@ -130,18 +130,14 @@ body,
   font-size: 0.3rem;
 }
 .upload div {
-  width: 100%;
   height: 0.9rem;
   border-bottom: 1px solid #eee;
-  line-height: 0.9rem;
+  /* line-height: 0.9rem; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
-
 .upload input {
-  width: 50%;
-  float: right;
-  margin-top: 0.3rem;
-  padding-left: 0.83rem;
-  box-sizing: border-box;
   border: 0;
 }
 .price {
