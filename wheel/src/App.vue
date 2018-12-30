@@ -18,7 +18,7 @@
       <div class="upload">
         <div>
           <span>服务类型</span>
-          <mt-popup>...fsdfsdfsfs</mt-popup>
+          <span></span>
         </div>
         <div>
           <span>当前驾照签发城市</span>
@@ -53,7 +53,6 @@ import { Swipe, SwipeItem, Popup } from "mint-ui";
 import Vue from "vue";
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Popup.name, Popup);
 export default {
   name: "app",
   data() {
