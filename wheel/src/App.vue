@@ -45,28 +45,29 @@
       </div>
       <div class="payment">立即支付</div>
     </footer>
+    <van-popup v-model="show">内容</van-popup>
   </div>
 </template>
 
 <script>
 import { Swipe, SwipeItem, Popup } from "mint-ui";
 import Vue from "vue";
+import popup from "vant/lib/popup";
+import "vant/lib/button/style";
+Vue.component(Popup.name, Popup);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 export default {
   name: "app",
   data() {
-    ImgList: [
-      {
-        img: "https://h5.chelun.com/2017/update-licence2-pay/img/banner@3x.png"
-      },
-      {
-        img: "https://h5.chelun.com/2017/update-licence2-pay/img/banner@3x.png"
-      },
-      {
-        img: "https://h5.chelun.com/2017/update-licence2-pay/img/banner@3x.png"
-      }
-    ];
+    return {
+      show: true
+    };
+  },
+  methods: {
+    popupVisible() {
+      this.flag = true;
+    }
   }
 };
 </script>
