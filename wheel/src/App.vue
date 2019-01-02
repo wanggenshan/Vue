@@ -10,23 +10,33 @@
       <div class="newBanner">
         <mt-swipe :show-indicators="false">
           <mt-swipe-item>
-            <img src="./assets/banner.png" alt>
+            <img src="./assets/baner.png" alt>
           </mt-swipe-item>
         </mt-swipe>
       </div>
-
+      <Upload/>
+      <van-popup v-model="show" position="bottom" :overlay="true">
+        <div class="ant-cont" @click="hidemk">换驾照</div>
+        <div class="ant-cont" @click="hidemk">补驾照</div>
+      </van-popup>
       <div class="upload">
         <div>
           <span>服务类型</span>
-          <div></div>
+          <div class="inpu">
+            <input type="text" placeholder="请选择" @click="chageShow">
+          </div>
         </div>
         <div>
-          <span>当前驾照签发城市</span>5
-          <input type="text" placeholder="请选择签发地">
+          <span>当前驾照签发城市</span>
+          <div class="inpu">
+            <input type="text" placeholder="请选择签发地">
+          </div>
         </div>
         <div>
           <span>可补换的签发城市</span>
-          <input type="text" placeholder="请选择补换地">
+          <div class="inpu">
+            <input type="text" placeholder="请选择补换地">
+          </div>
         </div>
         <div>
           <span>服务费</span>
@@ -45,46 +55,33 @@
       </div>
       <div class="payment">立即支付</div>
     </footer>
-    <!-- <van-popup v-model="show" position="bottom" :overlay="true"> -->
-    <!-- <van-picker
-        show-toolbar
-        title="请选择区域代理城市"
-        :columns="columns"
-        @cancel="onCancel"
-        @confirm="onConfirm"
-        @change="onChange"
-      />请选择城市
-    </van-popup>-->
   </div>
 </template>
 
 <script>
-import { Swipe, SwipeItem, Popup } from "mint-ui";
 import Vue from "vue";
+import { Swipe, SwipeItem, Popup } from "mint-ui";
+import Upload from "./components/Upload";
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+
 export default {
   name: "app",
   data() {
-    // return {
-    //   message: "请选择代理区域:",
-    //   show: true,
-    //   columns: ["杭州", "宁波", "温州", "嘉兴", "湖州"]
-    // };
+    return {
+      show: false
+    };
   },
   methods: {
-    // onChange(picker, value, index) {
-    //   this.message = value;
-    // },
-    // onCancel() {
-    //   this.show = false;
-    // },
-    // onConfirm(picker, valus, index) {
-    //   this.show = false;
-    // },
-    // ShowPup() {
-    //   this.show = true;
-    // }
+    chageShow() {
+      this.show = true;
+    },
+    hidemk() {
+      this.show = false;
+    }
+  },
+  components: {
+    Upload
   }
 };
 </script>
@@ -149,13 +146,12 @@ body,
 .upload div {
   height: 0.9rem;
   border-bottom: 1px solid #eee;
-  /* line-height: 0.9rem; */
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
 }
 .upload input {
   border: 0;
+}
+.upload span {
+  line-height: 0.9rem;
 }
 .price {
   float: right;
@@ -204,5 +200,18 @@ body,
   background: #999;
   color: #fff;
   font-size: 0.32rem;
+}
+.inpu {
+  float: right;
+  line-height: 0.4rem;
+}
+.inpu input {
+  margin-top: 0.2rem;
+}
+.ant-cont {
+  height: 0.8rem;
+  text-align: center;
+  line-height: 0.8rem;
+  border-bottom: 1px solid #eee;
 }
 </style>
