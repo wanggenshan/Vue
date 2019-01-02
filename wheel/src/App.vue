@@ -10,7 +10,7 @@
       <div class="newBanner">
         <mt-swipe :show-indicators="false">
           <mt-swipe-item>
-            <img src="localhost:8080/src/assets/banner.png" alt>
+            <img src="./assets/banner.png" alt>
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -18,10 +18,10 @@
       <div class="upload">
         <div>
           <span>服务类型</span>
-          <span></span>
+          <div></div>
         </div>
         <div>
-          <span>当前驾照签发城市</span>
+          <span>当前驾照签发城市</span>5
           <input type="text" placeholder="请选择签发地">
         </div>
         <div>
@@ -45,29 +45,46 @@
       </div>
       <div class="payment">立即支付</div>
     </footer>
-    <van-popup v-model="show">内容</van-popup>
+    <!-- <van-popup v-model="show" position="bottom" :overlay="true"> -->
+    <!-- <van-picker
+        show-toolbar
+        title="请选择区域代理城市"
+        :columns="columns"
+        @cancel="onCancel"
+        @confirm="onConfirm"
+        @change="onChange"
+      />请选择城市
+    </van-popup>-->
   </div>
 </template>
 
 <script>
 import { Swipe, SwipeItem, Popup } from "mint-ui";
 import Vue from "vue";
-import popup from "vant/lib/popup";
-import "vant/lib/button/style";
-Vue.component(Popup.name, Popup);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 export default {
   name: "app",
   data() {
-    return {
-      show: true
-    };
+    // return {
+    //   message: "请选择代理区域:",
+    //   show: true,
+    //   columns: ["杭州", "宁波", "温州", "嘉兴", "湖州"]
+    // };
   },
   methods: {
-    popupVisible() {
-      this.flag = true;
-    }
+    // onChange(picker, value, index) {
+    //   this.message = value;
+    // },
+    // onCancel() {
+    //   this.show = false;
+    // },
+    // onConfirm(picker, valus, index) {
+    //   this.show = false;
+    // },
+    // ShowPup() {
+    //   this.show = true;
+    // }
   }
 };
 </script>
