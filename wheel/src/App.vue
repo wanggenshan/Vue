@@ -10,11 +10,11 @@
       <div class="newBanner">
         <mt-swipe :show-indicators="false">
           <mt-swipe-item>
-            <img src="./assets/banner.png" alt>
+            <img src="./assets/baner.png" alt>
           </mt-swipe-item>
         </mt-swipe>
       </div>
-
+      <upload></upload>
       <div class="upload">
         <div>
           <span>服务类型</span>
@@ -61,6 +61,7 @@
 <script>
 import { Swipe, SwipeItem, Popup } from "mint-ui";
 import Vue from "vue";
+import upload from "./components/upload";
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 export default {
@@ -77,6 +78,9 @@ export default {
     mk() {
       this.show = false;
     }
+  },
+  components: {
+    upload
   }
 };
 </script>

@@ -1,24 +1,37 @@
+import demo1 from "../../assets/id-a.png";
+import demo2 from "../../assets/id-b.png";
+import demo3 from "../../assets/licence-a.png";
+import demo4 from "../../assets/licence.png";
+import demo5 from "../../assets/photo.png";
 const state = {
   list: [
     {
       src: "",
-      demo: ""
+      demo: demo1,
+      desc: "身份证正面"
     },
     {
       src: "",
-      demo: ""
+      demo: demo2,
+      desc: "身份证反面"
     },
     {
       src: "",
-      demo: ""
+      demo: demo3,
+      desc: "驾驶证正页"
     },
     {
       src: "",
-      demo: ""
+      demo: demo4,
+      desc: "驾驶证副页"
     },
     {
       src: "",
-      demo: ""
+      demo: demo5,
+      desc: "白底照片"
     }
   ]
+};
+export default {
+  state
 };
