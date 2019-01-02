@@ -5,14 +5,11 @@ import App from "./App";
 import router from "./router";
 import "mint-ui/lib/style.css";
 import mintUI from "mint-ui";
-import { Popup } from "vant";
-Vue.use(Popup);
-import { Picker } from "vant";
-
-Vue.use(Picker);
-
 Vue.config.productionTip = false;
 Vue.use(mintUI);
+import Vant from "vant";
+import "vant/lib/index.css";
+Vue.use(Vant);
 
 /* eslint-disable no-new */
 new Vue({

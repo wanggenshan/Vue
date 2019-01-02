@@ -18,15 +18,21 @@
       <div class="upload">
         <div>
           <span>服务类型</span>
-          <div></div>
+          <div class="inpt">
+            <input type="text" placeholder="请选择" @click="showadd">
+          </div>
         </div>
         <div>
-          <span>当前驾照签发城市</span>5
-          <input type="text" placeholder="请选择签发地">
+          <span>当前驾照签发城市</span>
+          <div class="inpt">
+            <input type="text" placeholder="请选择签发地">
+          </div>
         </div>
         <div>
           <span>可补换的签发城市</span>
-          <input type="text" placeholder="请选择补换地">
+          <div class="inpt">
+            <input type="text" placeholder="请选择补换地">
+          </div>
         </div>
         <div>
           <span>服务费</span>
@@ -37,6 +43,10 @@
         <span>优惠</span>
         <span class="r">></span>
       </div>
+      <van-popup v-model="show" position="bottom" :overlay="true">
+        <div class="mk" @click="mk">换驾照</div>
+        <div class="mk" @click="mk">补驾照</div>
+      </van-popup>
     </main>
     <footer class="footer">
       <div class="pay">
@@ -45,16 +55,6 @@
       </div>
       <div class="payment">立即支付</div>
     </footer>
-    <!-- <van-popup v-model="show" position="bottom" :overlay="true"> -->
-    <!-- <van-picker
-        show-toolbar
-        title="请选择区域代理城市"
-        :columns="columns"
-        @cancel="onCancel"
-        @confirm="onConfirm"
-        @change="onChange"
-      />请选择城市
-    </van-popup>-->
   </div>
 </template>
 
@@ -66,25 +66,17 @@ Vue.component(SwipeItem.name, SwipeItem);
 export default {
   name: "app",
   data() {
-    // return {
-    //   message: "请选择代理区域:",
-    //   show: true,
-    //   columns: ["杭州", "宁波", "温州", "嘉兴", "湖州"]
-    // };
+    return {
+      show: false
+    };
   },
   methods: {
-    // onChange(picker, value, index) {
-    //   this.message = value;
-    // },
-    // onCancel() {
-    //   this.show = false;
-    // },
-    // onConfirm(picker, valus, index) {
-    //   this.show = false;
-    // },
-    // ShowPup() {
-    //   this.show = true;
-    // }
+    showadd() {
+      this.show = true;
+    },
+    mk() {
+      this.show = false;
+    }
   }
 };
 </script>
@@ -149,10 +141,15 @@ body,
 .upload div {
   height: 0.9rem;
   border-bottom: 1px solid #eee;
-  /* line-height: 0.9rem; */
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+}
+.upload span {
+  line-height: 0.9rem;
+}
+.inpt {
+  float: right;
+}
+.inpt input {
+  margin-top: 0.2rem;
 }
 .upload input {
   border: 0;
@@ -204,5 +201,10 @@ body,
   background: #999;
   color: #fff;
   font-size: 0.32rem;
+}
+.mk {
+  height: 0.8rem;
+  line-height: 0.8rem;
+  text-align: center;
 }
 </style>
