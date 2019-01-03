@@ -32,6 +32,14 @@ const state = {
     }
   ]
 };
+const mutations = {
+  updateList(state, payload) {
+    state.list[payload.index].src = payload.src;
+  }
+};
+
 export default {
-  state
+  namespaced: true,
+  state,
+  mutations
 };

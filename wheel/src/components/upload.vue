@@ -8,15 +8,16 @@
     <div class="mask" v-show="showM">
       <img :src="current.demo">
       <div class="mask-btn">
-        <div class="mk1">拍照</div>
-        <div class="mk2">相册</div>
+        <div class="mk1" @click="upload(1)">拍照</div>
+        <div class="mk2" @click="upload(2)">相册</div>
         <div class="mk3" @click="hideM">取消</div>
       </div>
     </div>
   </ul>
 </template>
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
+import { uploadimg } from "../api/index.js";
 import add from "../assets/add.png";
 export default {
   name: "upload",
@@ -35,12 +36,31 @@ export default {
     }
   },
   methods: {
+    ...mapMutations({
+      updatedList: "upload/updatedList"
+    }),
+    //点击显示遮罩层
     click(index) {
       this.current = this.list[index];
       this.showM = true;
     },
+    //点击关闭遮罩层
     hideM() {
       this.showM = false;
+    },
+    //点击拍照
+    async upload(type) {
+      let res = await uploadimg(type);
+      if (res.result == 1) {
+        this.updateList({
+          src: res.data.url,
+          index: this.list.findIndex(item => item == this.current)
+        });
+        this.showMask = false;
+      } else {
+        alert("上传图片失败");
+      }
+      console.log("res...", res);
     }
   }
 };
