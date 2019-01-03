@@ -48,7 +48,7 @@ export default {
     hideM() {
       this.showM = false;
     },
-    //点击拍照
+    //拍照
     async upload(type) {
       let res = await uploadimg(type);
       if (res.result == 1) {
@@ -56,7 +56,7 @@ export default {
           src: res.data.url,
           index: this.list.findIndex(item => item == this.current)
         });
-        this.showMask = false;
+        this.showM = false;
       } else {
         alert("上传图片失败");
       }

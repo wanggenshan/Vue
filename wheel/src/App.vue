@@ -16,25 +16,16 @@
       </div>
       <upload></upload>
       <div class="upload">
-        <div>
-          <span>服务类型</span>
-          <div class="inpt">
-            <input type="text" placeholder="请选择" @click="showadd">
-          </div>
-        </div>
-        <div>
+        <server/>
+        <div class="up">
           <span>当前驾照签发城市</span>
-          <div class="inpt">
-            <input type="text" placeholder="请选择签发地">
-          </div>
+          <span>请选择签发地</span>
         </div>
-        <div>
+        <div class="up">
           <span>可补换的签发城市</span>
-          <div class="inpt">
-            <input type="text" placeholder="请选择补换地">
-          </div>
+          <span>请选择补换地</span>
         </div>
-        <div>
+        <div class="up">
           <span>服务费</span>
           <span class="price">￥399</span>
         </div>
@@ -43,10 +34,6 @@
         <span>优惠</span>
         <span class="r">></span>
       </div>
-      <van-popup v-model="show" position="bottom" :overlay="true">
-        <div class="mk" @click="mk">换驾照</div>
-        <div class="mk" @click="mk">补驾照</div>
-      </van-popup>
     </main>
     <footer class="footer">
       <div class="pay">
@@ -62,25 +49,18 @@
 import { Swipe, SwipeItem, Popup } from "mint-ui";
 import Vue from "vue";
 import upload from "./components/upload";
+import server from "./components/serve";
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 export default {
   name: "app",
   data() {
-    return {
-      show: false
-    };
+    return {};
   },
-  methods: {
-    showadd() {
-      this.show = true;
-    },
-    mk() {
-      this.show = false;
-    }
-  },
+  methods: {},
   components: {
-    upload
+    upload,
+    server
   }
 };
 </script>
@@ -142,21 +122,20 @@ body,
   box-sizing: border-box;
   font-size: 0.3rem;
 }
-.upload div {
-  height: 0.9rem;
-  border-bottom: 1px solid #eee;
+.up {
+  width: 100%;
+  height: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.upload span {
-  line-height: 0.9rem;
-}
+
 .inpt {
   float: right;
+  line-height: 0.9rem;
 }
-.inpt input {
-  margin-top: 0.2rem;
-}
-.upload input {
-  border: 0;
+.inpt span {
+  color: #999;
 }
 .price {
   float: right;
