@@ -85,6 +85,7 @@ export default {
 .ullt li {
   flex: 1;
   position: relative;
+  color: #999;
 }
 
 .ullt img {

@@ -17,10 +17,8 @@
       <upload></upload>
       <div class="upload">
         <server/>
-        <div class="up">
-          <span>当前驾照签发城市</span>
-          <span>请选择签发地</span>
-        </div>
+        <city/>
+
         <div class="up">
           <span>可补换的签发城市</span>
           <span>请选择补换地</span>
@@ -46,21 +44,32 @@
 </template>
 
 <script>
+import { cityList, costList } from "./api/index.js";
 import { Swipe, SwipeItem, Popup } from "mint-ui";
 import Vue from "vue";
 import upload from "./components/upload";
 import server from "./components/serve";
+import city from "./components/city";
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 export default {
   name: "app",
   data() {
-    return {};
+    return {
+      showCity: false,
+      cityList: [],
+      cityArray: [],
+      info: {
+        type: "",
+        city: []
+      }
+    };
   },
   methods: {},
   components: {
     upload,
-    server
+    server,
+    city
   }
 };
 </script>
@@ -129,12 +138,7 @@ body,
   justify-content: space-between;
   align-items: center;
 }
-
-.inpt {
-  float: right;
-  line-height: 0.9rem;
-}
-.inpt span {
+.up span {
   color: #999;
 }
 .price {
