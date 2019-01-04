@@ -18,7 +18,6 @@
       <div class="upload">
         <server/>
         <city/>
-
         <div class="up">
           <span>可补换的签发城市</span>
           <span>请选择补换地</span>
@@ -32,6 +31,7 @@
         <span>优惠</span>
         <span class="r">></span>
       </div>
+      <a class="question">常见问题</a>
     </main>
     <footer class="footer">
       <div class="pay">
@@ -193,5 +193,14 @@ body,
   height: 0.8rem;
   line-height: 0.8rem;
   text-align: center;
+}
+.question {
+  width: 100%;
+  height: 0.4rem;
+  text-align: center;
+  line-height: 0.4rem;
+  display: block;
+  margin-top: 0.2rem;
+  color: #3aaffd;
 }
 </style>
