@@ -31,7 +31,7 @@
         <span>优惠</span>
         <span class="r">></span>
       </div>
-      <a class="question">常见问题</a>
+      <router-link to="/faq" class="question">常见问题</router-link>
     </main>
     <footer class="footer">
       <div class="pay">
