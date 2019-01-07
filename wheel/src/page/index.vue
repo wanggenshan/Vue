@@ -32,13 +32,16 @@
         <span class="r">></span>
       </div>
       <router-link to="/faq" class="question">常见问题</router-link>
+      <customer/>
     </main>
     <footer class="footer">
       <div class="pay">
         实付:
         <b>￥399</b>
       </div>
-      <div class="payment">立即支付</div>
+      <!-- <div class="payment">  -->
+      <router-link to="delivery" class="payment">立即支付</router-link>
+      <!-- </div> -->
     </footer>
   </div>
 </template>
@@ -50,6 +53,7 @@ import Vue from "vue";
 import upload from "../components/upload";
 import server from "../components/serve";
 import city from "../components/city";
+import customer from "../components/customer";
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 export default {
@@ -69,7 +73,8 @@ export default {
   components: {
     upload,
     server,
-    city
+    city,
+    customer
   }
 };
 </script>
@@ -180,6 +185,7 @@ body,
   color: red;
 }
 .payment {
+  display: block;
   width: 30%;
   text-align: center;
   background: #999;

@@ -31,6 +31,59 @@
     <script>
       eruda.init();
     </script>
+    <script>
+      (function(a, h, c, b, f, g) {
+        a["UdeskApiObject"] = f;
+        a[f] =
+          a[f] ||
+          function() {
+            (a[f].d = a[f].d || []).push(arguments);
+          };
+        g = h.createElement(c);
+        g.async = 1;
+        g.src = b;
+        c = h.getElementsByTagName(c)[0];
+        c.parentNode.insertBefore(g, c);
+      })(
+        window,
+        document,
+        "script",
+        "//weizhang.udesk.cn/im_client/js/udeskApi.js?_t=1475044663008",
+        "ud"
+      );
+      ud({
+        code: "gigdb0a",
+        targetSelector: "#cc",
+        link: "//weizhang.udesk.cn/im_client",
+        group_id: "32981",
+        mobile: {
+          mode: "blank",
+          color: "#307AE8",
+          pos_flag: "crb",
+          onlineText: "联系客服，在线咨询",
+          offlineText: "客服下班，请留言",
+          pop: {
+            direction: "top",
+            arrow: {
+              top: 0,
+              left: "70%"
+            }
+          }
+        },
+        mode: "inner",
+        color: "#307AE8",
+        pos_flag: "srb",
+        onlineText: "联系客服，在线咨询",
+        offlineText: "客服下班，请留言",
+        pop: {
+          direction: "top",
+          arrow: {
+            top: 0,
+            left: "80%"
+          }
+        }
+      });
+    </script>
     <style>
       body {
         font-size: 0.28rem;
