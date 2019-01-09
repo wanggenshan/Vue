@@ -32,6 +32,11 @@ export default {
         img.width,
         img.height
       );
+      //绘制头像
+      let aUrl =
+        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=17687413,3389183670&fm=26&gp=0.jpg";
+      let atar = await this.loadImg(aUrl);
+      context.drawImage(atar, 0, 0, atar.width, atar.height, 97, 757, 86, 80);
     },
     loadImg(src) {
       return new Promise((resolve, reject) => {
