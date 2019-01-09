@@ -37,6 +37,11 @@ export default {
         "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=17687413,3389183670&fm=26&gp=0.jpg";
       let atar = await this.loadImg(aUrl);
       context.drawImage(atar, 0, 0, atar.width, atar.height, 97, 757, 86, 80);
+      context.font = "26px 微软雅黑";
+      context.fillStyle = "#265f18";
+      let text = context.measureText("兔叽");
+      context.fillText("兔叽", 140 - text.width / 2, 860);
+      context.save();
     },
     loadImg(src) {
       return new Promise((resolve, reject) => {
