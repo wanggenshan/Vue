@@ -6,8 +6,8 @@
       <div>正在办理</div>
       <div>办理完成</div>
     </header>
+    <a class="sadd">收货地址</a>
     <div class="del-wrap">
-      <h6 class="adds">收货地址</h6>
       <div class="del-main">
         <span>联系省市</span>
       </div>
@@ -90,11 +90,9 @@ body,
   height: 0.85rem;
   line-height: 0.85rem;
 }
-.adds {
-  font-style: normal;
-  text-align: center;
+.sadd {
   width: 100%;
-  height: 0.45rem;
+  text-align: center;
   color: #999;
 }
 .del-main {
@@ -103,6 +101,7 @@ body,
   line-height: 40px;
   background: #fff;
   padding-left: 10px;
+  color: #999;
   box-sizing: border-box;
   border-bottom: 1px solid #ccc;
 }

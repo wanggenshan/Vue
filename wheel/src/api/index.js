@@ -19,6 +19,10 @@ function sendRequest(url, method = "GET", data = {}) {
     .then(res => res.json())
     .then(body => body);
 }
+//分享
+export let doshare = () => {
+  JSBridge.invoke("ui", "shareMessage");
+};
 
 export let uploadimg = type => {
   return new Promise((resolve, reject) => {

@@ -8,7 +8,7 @@
         <img src="../assets/coupon.png" alt>
         <div class="btn">
           <button class="z" @click="hidep">给钱都不要</button>
-          <button class="g">果断分享</button>
+          <button class="g" @click="share">果断分享</button>
         </div>
       </div>
     </div>
@@ -16,7 +16,16 @@
 </template>
 
 <script>
+import { doshare } from "../api/index";
 export default {
+  created() {
+    window["CHELUN_SHARE_DATA_WXTIMELINE"] = {
+      title: "大图",
+      imgUrl:
+        "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2208786905,3348757257&fm=26&gp=0.jpg",
+      type: "photo"
+    };
+  },
   data() {
     return {
       showP: false
@@ -30,6 +39,10 @@ export default {
     //点击关闭遮罩层
     hidep() {
       this.showP = false;
+    },
+    //点击按钮分享
+    share() {
+      doshare();
     }
   }
 };
@@ -92,6 +105,7 @@ export default {
 }
 .pmk h3 {
   text-align: center;
+  margin-top: 10px;
 }
 .pmk p {
   text-align: center;
