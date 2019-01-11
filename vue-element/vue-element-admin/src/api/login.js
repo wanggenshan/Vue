@@ -26,3 +26,6 @@ export function getUserInfo(token) {
     params: { token }
   });
 }
+export function getList(token) {
+  return request({ url: "/users/list", method: "get", params: { token } });
+}
