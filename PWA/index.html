@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello PWA</title>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="manifest" href="manifest.json" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="header">
+        <span>优鲜生活...</span> <input type="text" placeholder="搜索" />
+      </header>
+      <nav class="nav">
+        <div>热卖</div>
+        <div>会员特价</div>
+        <div>屯年货</div>
+        <div>安新菜场</div>
+        <div>火锅</div>
+        <div>拼好物</div>
+      </nav>
+      <div class="main">
+        <div class="main-recommed">
+          <div>优鲜严选</div>
+          <div>安心检测</div>
+          <div>赔付保障</div>
+        </div>
+        <div class="lantern">
+          <div>
+            <img
+              src="https://j-image.missfresh.cn/img_20181118234116965.png"
+              alt=""
+            />
+            <p>0元吃水果</p>
+          </div>
+          <div>
+            <img
+              src="https://j-image.missfresh.cn/img_20181118234315430.png"
+              alt=""
+            />
+            <p>水果美容院</p>
+          </div>
+          <div>
+            <img
+              src="https://j-image.missfresh.cn/img_20181118234340173.png"
+              alt=""
+            />
+            <p>加入会员</p>
+          </div>
+          <div>
+            <img
+              src="https://j-image.missfresh.cn/img_20181118234537451.png"
+              alt=""
+            />
+            <p>本周上新</p>
+          </div>
+          <div>
+            <img
+              src="https://j-image.missfresh.cn/img_20181118234837331.png"
+              alt=""
+            />
+            <p>每日签到</p>
+          </div>
+        </div>
+        <div class="card-wrap">
+          <img
+            data-v-f6a0fd68=""
+            src="https://j-image.missfresh.cn/img_20181213003703821.jpg"
+            class="image-view"
+          />
+          <img
+            data-v-f6a0fd68=""
+            src="https://j-image.missfresh.cn/img_20181213004855362.jpg"
+            class="image-view"
+          />
+        </div>
+      </div>
+      <footer class="footer">
+        <div>首页</div>
+        <div>分类</div>
+        <div>发现</div>
+        <div>购物车</div>
+        <div>我的</div>
+      </footer>
+    </div>
+    <script>
+      // 检测浏览器是否支持SW
+      if (navigator.serviceWorker != null) {
+        navigator.serviceWorker.register("sw.js").then(function(registartion) {
+          console.log("支持sw:", registartion.scope);
+        });
+      }
+    </script>
+  </body>
+</html>
