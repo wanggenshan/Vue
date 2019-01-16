@@ -5,6 +5,11 @@
       style="width: 100%"
     >
       <el-table-column label="ID" prop="id"></el-table-column>
+      <el-table-column label="Avatar" prop="avatar">
+        <template slot-scope="scope">
+          <img :src="scope.row.avatar" class="user-avatar">
+        </template>
+      </el-table-column>
       <el-table-column label="Name" prop="username"></el-table-column>
       <el-table-column label="Phone" prop="phone"></el-table-column>
       <el-table-column label="Email" prop="email"></el-table-column>
@@ -56,7 +61,14 @@
           <el-input type="text" v-model="current.username" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="头像" prop="avatar">
-          <el-input type="text" v-model="current.avatar" autocomplete="off"></el-input>
+          <el-upload
+            class="avatar-uploader"
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :show-file-list="false"
+          >
+            <img v-if="current.avatar" :src="current.avatar" class="avatar">
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          </el-upload>
         </el-form-item>
         <el-form-item label="手机号" prop="phone">
           <el-input type="text" v-model="current.phone" autocomplete="off"></el-input>
@@ -177,5 +189,11 @@ export default {
   }
 };
 </script>
-<style>
+<style scope>
+.avatar-uploader /deep/ .avatar {
+  width: 40px;
+}
+.user-avatar {
+  width: 60px;
+}
 </style>
