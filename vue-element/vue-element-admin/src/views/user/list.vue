@@ -4,20 +4,36 @@
       :data="tableData.filter(data => !search || data.username.toLowerCase().includes(search.toLowerCase()))"
       style="width: 100%"
     >
-      <el-table-column label="Date" prop="create_time" type="date"></el-table-column>
+      <el-table-column label="ID" prop="id"></el-table-column>
       <el-table-column label="Name" prop="username"></el-table-column>
+      <el-table-column label="Phone" prop="phone"></el-table-column>
+      <el-table-column label="Email" prop="email"></el-table-column>
       <el-table-column label="Address" prop="address"></el-table-column>
+      <el-table-column label="Roler" prop="roler"></el-table-column>
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
         </template>
         <template slot-scope="scope">
           <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
-          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
+          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">分配权限</el-button>
         </template>
       </el-table-column>
     </el-table>
-    <el-dialog title="提示" :visible.sync="dialogVisible" width="50%" :before-close="handleClose">
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :total="100"
+      :pager-count="11"
+      :currentPage="currentPage"
+      @current-change="loadData"
+    ></el-pagination>
+    <el-dialog
+      :title="type=='edit'?'修改用户信息':'为用户分配权限'"
+      :visible.sync="dialogVisible"
+      width="50%"
+      :before-close="handleClose"
+    >
       <el-form
         :model="current"
         status-icon
@@ -26,7 +42,7 @@
         label-width="100px"
         class="demo-ruleForm"
       >
-        <el-form-item label="日期" prop="date">
+        <!-- <el-form-item label="日期" prop="date">
           <el-date-picker
             v-model="current.date"
             type="date"
@@ -34,13 +50,36 @@
             format="yyyy-MM-dd"
             value-format="yyyy-MM-dd"
           ></el-date-picker>
-          <!-- <el-input type="date"  autocomplete="off"></el-input> -->
+ 
+        </el-form-item>-->
+        <el-form-item label="名字" prop="username">
+          <el-input type="text" v-model="current.username" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="名字" prop="name">
-          <el-input type="text" v-model="current.name" autocomplete="off"></el-input>
+        <el-form-item label="头像" prop="avatar">
+          <el-input type="text" v-model="current.avatar" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="手机号" prop="phone">
+          <el-input type="text" v-model="current.phone" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="Email" prop="email">
+          <el-input type="text" v-model="current.email" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="地址" prop="address">
           <el-input v-model.number="current.address"></el-input>
+        </el-form-item>
+        <el-form-item label="我的角色" prop="roler" v-if="type=='permission'">
+          <el-tag
+            v-for="tag in myTag"
+            :key="tag"
+            style="marginRight: 5px"
+            closable
+            @close="deleteTag(tag)"
+          >{{tag}}</el-tag>
+        </el-form-item>
+        <el-form-item label="所有角色" v-if="type=='permission'">
+          <el-tag v-for="tag in tags" :key="tag" style="marginRight: 5px" :type="tag.type">
+            <span @click="selectTag">{{tag}}</span>
+          </el-tag>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
@@ -52,36 +91,55 @@
 </template>
 
 <script>
-import { getList } from "@/api/login.js";
+import { mapState, mapActions } from "vuex";
 export default {
   data() {
-    const time = (rule, value, callback) => {
-      if (value < "2019-01-01") {
-        callback(new Error("当前日期不能小于2019-01-01"));
-      } else {
-        callback();
-      }
-    };
+    // const time = (rule, value, callback) => {
+    //   if (value < "2019-01-01") {
+    //     callback(new Error("当前日期不能小于2019-01-01"));
+    //   } else {
+    //     callback();
+    //   }
+    // };
     return {
-      tableData: [],
       search: "",
+      type: "",
+      tags: ["boss", "developer", "producter", "operator", "designer"],
+      myTag: [],
       dialogVisible: false,
       current: {},
       rules: {
-        date: [{ trigger: "blur", validator: time }],
-        name: [{ required: true, trigger: "blur" }],
+        // date: [{ trigger: "blur", validator: time }],
+        username: [{ required: true, trigger: "blur" }],
         address: [{ required: true, trigger: "blur" }]
       }
     };
   },
+  computed: {
+    ...mapState({
+      tableData: state => state.list.list,
+      currentPage: state => state.list.current
+    })
+  },
+
+  mounted() {
+    this.getUserList();
+  },
   methods: {
+    ...mapActions({
+      getUserList: "list/getUserList"
+    }),
     handleEdit(index, row) {
       this.dialogVisible = true;
+      this.type = "edit";
       this.current = row;
-      console.log(index, row);
+      // console.log(index, row);
     },
     handleDelete(index, row) {
-      console.log(index, row);
+      // console.log(index, row);
+      this.dialogVisible = true;
+      this.type = "permission";
+      this.current = row;
     },
     handleClose() {
       this.dialogVisible = false;
@@ -102,12 +160,20 @@ export default {
           });
         }
       });
+    },
+    loadData(page) {
+      console.log("page.....", page);
+      this.getUserList([`page=${page}`]);
+    },
+    selectTag(e) {
+      let tag = e.target.innerText;
+      this.myTag.push(tag);
+      this.myTag = [...new Set(this.myTag)];
+    },
+    deleteTag(tag) {
+      let index = this.myTag.findIndex(item => item == tag);
+      this.myTag.splice(index, 1);
     }
-  },
-  mounted() {
-    getList().then(res => {
-      this.tableData = res.data.data.list;
-    });
   }
 };
 </script>
