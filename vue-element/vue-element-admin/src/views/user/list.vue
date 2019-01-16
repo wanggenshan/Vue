@@ -106,13 +106,13 @@
 import { mapState, mapActions } from "vuex";
 export default {
   data() {
-    // const time = (rule, value, callback) => {
-    //   if (value < "2019-01-01") {
-    //     callback(new Error("当前日期不能小于2019-01-01"));
-    //   } else {
-    //     callback();
-    //   }
-    // };
+    const phones = (rule, value, callback) => {
+      if (!/^1[34578]\d{9}$/.test(phone)) {
+        callback(new Error("请输入正确手机号"));
+      } else {
+        callback();
+      }
+    };
     return {
       search: "",
       type: "",
@@ -121,7 +121,7 @@ export default {
       dialogVisible: false,
       current: {},
       rules: {
-        // date: [{ trigger: "blur", validator: time }],
+        date: [{ trigger: "blur", validator: phones }],
         username: [{ required: true, trigger: "blur" }],
         address: [{ required: true, trigger: "blur" }]
       }
