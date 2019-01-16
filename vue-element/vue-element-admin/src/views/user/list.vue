@@ -107,8 +107,17 @@ import { mapState, mapActions } from "vuex";
 export default {
   data() {
     const phones = (rule, value, callback) => {
-      if (!/^1[34578]\d{9}$/.test(phone)) {
+      if (!/^1[34578]\d{9}$/.test(value)) {
         callback(new Error("请输入正确手机号"));
+      } else {
+        callback();
+      }
+    };
+    const emails = (rule, value, callback) => {
+      if (
+        /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(value)
+      ) {
+        callback(new Error("请输入正确邮箱地址"));
       } else {
         callback();
       }
@@ -122,6 +131,7 @@ export default {
       current: {},
       rules: {
         date: [{ trigger: "blur", validator: phones }],
+        date: [{ trigger: "blur", validator: emails }],
         username: [{ required: true, trigger: "blur" }],
         address: [{ required: true, trigger: "blur" }]
       }
