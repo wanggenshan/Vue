@@ -64,7 +64,8 @@
         <el-form-item v-if="type=='edit'" label="头像" prop="avatar">
           <el-upload
             class="avatar-uploader"
-            action="https://jsonplaceholder.typicode.com/posts/"
+            action="http://123.206.55.50:11000/upload"
+            :on-success="upload"
             :show-file-list="false"
           >
             <img v-if="current.avatar" :src="current.avatar" class="avatar">
@@ -143,6 +144,18 @@ export default {
     this.getUserList();
   },
   methods: {
+    //上传图片
+    upload(response, file, fileList) {
+      if (response.code == 1) {
+        this.current.avatar = response.data[0].path;
+        console.log("response.data[0].path", response.data[0].path);
+      } else {
+        this.$message({
+          message: error,
+          type: "error"
+        });
+      }
+    },
     ...mapActions({
       getUserList: "list/GetUserList",
       updateUserInfo: "list/UpdateUserInfo",
