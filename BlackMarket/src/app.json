@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/type/main",
+    "pages/cart/main",
+    "pages/my/main"
+  ],
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#fff",
+    "backgroundColor": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/main",
+        "text": "首页",
+        "iconPath": "./assets/index.png",
+        "selectedIconPath": "./assets/index_active.png"
+      },
+      {
+        "pagePath": "pages/type/main",
+        "text": "分类",
+        "iconPath": "./assets/type.png",
+        "selectedIconPath": "./assets/type_active.png"
+      },
+      {
+        "pagePath": "pages/cart/main",
+        "text": "购物车",
+        "iconPath": "./assets/cart.png",
+        "selectedIconPath": "./assets/cart_active.png"
+      },
+      {
+        "pagePath": "pages/my/main",
+        "text": "我的",
+        "iconPath": "./assets/my.png",
+        "selectedIconPath": "./assets/my_active.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "黑市BlackMarket",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "black"
+  }
+}

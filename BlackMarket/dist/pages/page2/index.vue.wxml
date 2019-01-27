@@ -1,0 +1,6 @@
+<template name="1553ca6e">
+  <view class="_div data-v-067ef25e">
+    <view class="_div data-v-067ef25e">page2 use inline js</view>
+    <view class="_div data-v-067ef25e">{{ ver }}</view>
+  </view>
+</template>

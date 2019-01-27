@@ -1,0 +1,65 @@
+@import "../../common/vendor.wxss";
+
+.counter-warp .home {
+  color: mediumvioletred;
+}
+page,
+page,
+.counter-warp {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.header {
+  height: 200rpx;
+  width: 100%;
+}
+.search {
+  width: 90%;
+  height: 80rpx;
+  background: #eee;
+  margin-left: 5%;
+  border-radius: 20rpx;
+  padding-left: 30rpx;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #ccc;
+  margin-top: 15rpx;
+}
+.nav-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+  margin-top: 20rpx;
+  padding: 0 35rpx;
+}
+.nav-group ._p {
+  display: inline-block;
+  width: 140rpx;
+  height: 90rpx;
+  margin-right: 40rpx;
+}
+.main {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.item {
+  width: 90%;
+  margin-left: 5%;
+  height: 400rpx;
+}
+.item image {
+  width: 100%;
+  height: 400rpx;
+}
+.card {
+  padding: 20rpx;
+}
