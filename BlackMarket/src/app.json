@@ -3,7 +3,8 @@
     "pages/index/main",
     "pages/type/main",
     "pages/cart/main",
-    "pages/my/main"
+    "pages/my/main",
+    "pages/search/main"
   ],
   "tabBar": {
     "color": "#999",

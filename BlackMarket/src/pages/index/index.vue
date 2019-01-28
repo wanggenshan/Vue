@@ -1,10 +1,10 @@
 <template>
   <div class="counter-warp">
     <header class="header">
-      <input type="text" class="search" placeholder="你随便搜 搜得到算我输">
+      <input type="text" class="search" placeholder="你随便搜 搜得到算我输" @click="gosearch">
       <i-tabs :current="current" scroll @change="handleChange" color="#000">
         <i-tab title="热门推荐" :key="-1"></i-tab>
-        <i-tab v-for="(item, index) in categories" :key="index" :title="item.name"></i-tab>
+        <i-tab v-for="(item, index) in categories" :key="index" :title="item.name" class="tab-m"></i-tab>
       </i-tabs>
     </header>
     <main class="main">
@@ -79,5 +79,8 @@ body,
 
 .swiper-img {
   margin-left: 8%;
+}
+.tab-m {
+  margin-right: 6rpx;
 }
 </style>

@@ -70,3 +70,6 @@ page,
 .swiper-img {
   margin-left: 8%;
 }
+.tab-m {
+  margin-right: 6rpx;
+}

@@ -1,0 +1,6 @@
+<template name="61466b0a">
+  <view class="_div data-v-7355317a search-wrap">
+    <view class="_header data-v-7355317a header"><input type="text" class="_input data-v-7355317a search" placeholder="你随便搜 搜得到算我输" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" /></view>
+    <view class="_main data-v-7355317a search-main"></view>
+  </view>
+</template>

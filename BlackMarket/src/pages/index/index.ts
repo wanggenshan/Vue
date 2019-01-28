@@ -38,8 +38,8 @@ class Index extends Vue {
     let id = this["categories"][this.current].id;
     this["getCategoryProduct"](id);
   }
-
-  goSearch() {
+  //跳转搜索
+  gosearch() {
     wx.navigateTo({
       url: "/pages/search/main"
     });
