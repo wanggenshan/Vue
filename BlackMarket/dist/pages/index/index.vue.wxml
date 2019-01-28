@@ -1,29 +1,18 @@
-<template name="6748c1fc">
+<template name="0c2f5b8c">
   <view class="_div data-v-167bd626 counter-warp">
     <view class="_header data-v-167bd626 header"><input type="text" class="_input data-v-167bd626 search" placeholder="你随便搜 搜得到算我输" />
-      <scroll-view class="_scroll-view data-v-167bd626 nav-group" scroll-x="true">
-        <view wx:key="index" key="{{index}}" wx:for="{{categories}}" wx:for-index="index" wx:for-item="item" class="_p data-v-167bd626">{{item.name}}</view>
-      </scroll-view>
+      <i-tabs current="{{current}}" scroll bindchange="handleProxy" color="#000" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-167bd626">
+        <i-tab title="热门推荐" key="{{-1}}" class="_i-tab data-v-167bd626"></i-tab>
+        <i-tab wx:key="index" key="{{index}}" title="{{item.name}}" wx:for="{{categories}}" wx:for-index="index" wx:for-item="item" class="_i-tab data-v-167bd626"></i-tab>
+      </i-tabs>
     </view>
     <view class="_main data-v-167bd626 main">
-      <view class="_div data-v-167bd626">
-        <swiper class="_swiper data-v-167bd626 cont" current="{{currentTab}}" circular="true" skip-hidden-item-layout="true">
-          <swiper-item class="_swiper-item data-v-167bd626">
-            <view class="_div data-v-167bd626 item">
-              <image src="http://img1.360buyimg.com/n6/jfs/t18307/277/1982585783/154032/4a794a5b/5addcdb8Nbf69f078.jpg" class="_img data-v-167bd626"></image>
-            </view>
-          </swiper-item>
-          <swiper-item class="_swiper-item data-v-167bd626">
-            <view class="_div data-v-167bd626 item">
-              <image src="https://img.alicdn.com/bao/uploaded/i1/2786730691/TB2pSh2bw1J.eBjy0FpXXaMoXXa_!!2786730691.jpg" class="_img data-v-167bd626"></image>
-            </view>
-          </swiper-item>
-          <swiper-item class="_swiper-item data-v-167bd626">
-            <view class="_div data-v-167bd626 item">
-              <image src="https://img.alicdn.com/bao/uploaded/i4/2838892713/TB2dkJykHFlpuFjy0FgXXbRBVXa_!!2838892713.jpg" class="_img data-v-167bd626"></image>
-            </view>
-          </swiper-item>
-        </swiper>
+      <image src="{{currentTab.cover_img}}" bindtap="handleProxy" mode="widthFix" class="_img data-v-167bd626 swiper-img" data-eventid="{{'1'}}" data-comkey="{{$k}}"></image>
+      <view class="_div data-v-167bd626 counter-icon">
+        <view wx:key="index" key="{{index}}" wx:for="{{currentTab.children}}" wx:for-index="index" wx:for-item="item" class="_div data-v-167bd626">
+          <image src="{{item.image.url}}" mode="widthFix" class="_img data-v-167bd626"></image>
+          <view class="_p data-v-167bd626">{{item.name}}</view>
+        </view>
       </view>
     </view>
   </view>

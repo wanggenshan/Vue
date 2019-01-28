@@ -1,38 +1,49 @@
-import { Vue, Component } from 'vue-property-decorator'
-import Card from '@/components/card.vue' // mpvue目前只支持的单文件组件
-import CompB from '@/components/compb.vue' // mpvue目前只支持的单文件组件
-const debug = require('debug')('log:Index')
+import { Vue, Component } from "vue-property-decorator";
 
-import {mapState, mapActions} from 'vuex';
+import { mapState, mapActions } from "vuex";
 
 // 必须使用装饰器的方式来指定component
 @Component({
-  components: {
-    Card,
-    CompB, //注意，vue的组件在template中的用法，`CompB` 会被转成 `comp-b`
-  },
   computed: mapState({
-    categories: state=>state['index'].categories
+    categories: state => state["index"].categories,
+    products: state => state["index"].products
   }),
   methods: mapActions({
-    getCategories: 'index/getCategories'
+    getCategories: "index/getCategories",
+    getCategoryProduct: "index/getCategoryProduct"
   })
 })
 class Index extends Vue {
-  ver: number = 123
+  ver: number = 123;
+  current: any = 0;
 
-  onShow() { // 小程序 hook
-    debug('onShow')
-    this['getCategories']();
+  get currentTab() {
+    return this["categories"][this.current];
   }
 
-  mounted() { // vue hook
-    debug('mounted')
+  onShow() {
+    // 小程序 hook
+    this["getCategories"]().then(() => {
+      this.getProduct();
+    });
   }
 
-  goVuex(){
-    wx.switchTab({ url: '/pages/my/main' });
+  handleChange({ target }) {
+    console.log("target...", target);
+    this.current = target.key;
+    this.getProduct();
+  }
+
+  getProduct() {
+    let id = this["categories"][this.current].id;
+    this["getCategoryProduct"](id);
+  }
+
+  goSearch() {
+    wx.navigateTo({
+      url: "/pages/search/main"
+    });
   }
 }
 
-export default Index
+export default Index;

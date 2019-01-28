@@ -1,8 +1,5 @@
 @import "../../common/vendor.wxss";
 
-.counter-warp .home {
-  color: mediumvioletred;
-}
 page,
 page,
 .counter-warp {
@@ -15,6 +12,25 @@ page,
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+.counter-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 24rpx;
+  color: #ccc;
+  padding: 0 5%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.counter-icon ._div {
+  width: 20%;
+}
+.counter-icon image {
+  width: 100rpx;
+  height: 100rpx;
 }
 .header {
   height: 200rpx;
@@ -51,15 +67,6 @@ page,
   -ms-flex: 1;
   flex: 1;
 }
-.item {
-  width: 90%;
-  margin-left: 5%;
-  height: 400rpx;
-}
-.item image {
-  width: 100%;
-  height: 400rpx;
-}
-.card {
-  padding: 20rpx;
+.swiper-img {
+  margin-left: 8%;
 }
